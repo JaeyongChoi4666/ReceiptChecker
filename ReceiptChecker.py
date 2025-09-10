@@ -13,6 +13,16 @@ if getattr(sys, "frozen", False):
 else:
     os.environ.setdefault("PLAYWRIGHT_BROWSERS_PATH", "0")
 
+# exe 파일 생성시 명령어
+
+# $env:PLAYWRIGHT_BROWSERS_PATH = "0"
+# >> & "C:\Users\Jaeyong.Choi\AppData\Local\Programs\Python\Python313\python.exe" -m playwright install chromium
+# >> # => 현재 폴더에 .\ms-playwright 생성
+
+# pyinstaller --onefile `
+# >>   --add-data "$env:LOCALAPPDATA\ms-playwright;ms-playwright" `
+# >>   ReceiptChecker.py
+
 TARGET_PHRASE = "작성자가 삭제하거나 유효하지 않은 리뷰입니다."
 
 # ---------- 1) 엑셀 파일 선택 ----------
