@@ -1,3 +1,5 @@
+import os, sys
+from pathlib import Path
 import re
 import asyncio
 import tkinter as tk
@@ -5,6 +7,11 @@ from tkinter import filedialog
 import pandas as pd
 from openpyxl import load_workbook
 from playwright.async_api import async_playwright
+
+if getattr(sys, "frozen", False):
+    os.environ["PLAYWRIGHT_BROWSERS_PATH"] = str(Path(sys._MEIPASS) / "ms-playwright")
+else:
+    os.environ.setdefault("PLAYWRIGHT_BROWSERS_PATH", "0")
 
 TARGET_PHRASE = "작성자가 삭제하거나 유효하지 않은 리뷰입니다."
 
