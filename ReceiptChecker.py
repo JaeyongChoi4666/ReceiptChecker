@@ -16,7 +16,7 @@ else:
 # exe 파일 생성시 명령어
 
 # $env:PLAYWRIGHT_BROWSERS_PATH = "0"
-# >> & "C:\Users\Jaeyong.Choi\AppData\Local\Programs\Python\Python313\python.exe" -m playwright install chromium
+# >> & "C:\Users\Jaeyong.Choi\AppData\Local\Programs\Python\Python313\python.exe" -m pla ywright install chromium
 # >> # => 현재 폴더에 .\ms-playwright 생성
 
 # pyinstaller --onefile `
@@ -87,12 +87,12 @@ async def main():
                 found = await fetch_and_check(page, str(raw_url) if pd.notna(raw_url) else "")
                 if found:
                     ws.cell(row=i, column=7).value = "누락"
-                    print(f"{i-1} [누락] {raw_url}")
+                    print(f"{i-1}/{total_rows} [누락] {raw_url}")
                 else:
-                    print(f"{i-1} [정상] {raw_url}")
+                    print(f"{i-1}/{total_rows} [정상] {raw_url}")
             except Exception as e:
                 ws.cell(row=i, column=7).value = f"오류: {str(e)[:40]}"
-                print(f"{i-1} [오류] {raw_url} -> {e}")
+                print(f"{i-1}/{total_rows} [오류] {raw_url} -> {e}")
 
         await browser.close()
 
